@@ -7,6 +7,8 @@ use Illuminate\Support\Collection;
 use OpenSpout\Reader\CSV\Options as CsvReaderOptions;
 use OpenSpout\Writer\Common\AbstractOptions;
 use OpenSpout\Writer\CSV\Options as CsvWriterOptions;
+use OpenSpout\Writer\XLSX\Options as ExcelWriterOptions;
+use OpenSpout\Reader\XLSX\Options as ExcelReaderOptions;
 
 /**
  * Class FastExcel.
@@ -57,13 +59,19 @@ class FastExcel
     protected $options_configurator = null;
 
     /**
+     * @var
+     */
+    protected $options = null;
+
+    /**
      * FastExcel constructor.
      *
      * @param array|Generator|Collection|null $data
      */
-    public function __construct(array|Generator|Collection $data = null)
+    public function __construct(array|Generator|Collection $data = null, CsvReaderOptions|CsvWriterOptions|ExcelReaderOptions|ExcelWriterOptions $options = null)
     {
         $this->data = $data;
+        $this->options = $options;
     }
 
     /**

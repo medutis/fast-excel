@@ -100,13 +100,13 @@ trait Exportable
     private function exportOrDownload($path, $function, callable $callback = null)
     {
         if (Str::endsWith($path, 'csv')) {
-            $options = new \OpenSpout\Writer\CSV\Options();
+            $options = $options = $this->options ?? new \OpenSpout\Writer\CSV\Options();
             $writer = new \OpenSpout\Writer\CSV\Writer($options);
         } elseif (Str::endsWith($path, 'ods')) {
-            $options = new \OpenSpout\Writer\ODS\Options();
+            $options = $options = $this->options ?? new \OpenSpout\Writer\ODS\Options();
             $writer = new \OpenSpout\Writer\ODS\Writer($options);
         } else {
-            $options = new \OpenSpout\Writer\XLSX\Options();
+            $options = $options = $this->options ?? new \OpenSpout\Writer\XLSX\Options();
             $writer = new \OpenSpout\Writer\XLSX\Writer($options);
         }
 
